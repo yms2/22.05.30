@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>너비와 높이</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        #wrapper{border: 5px solid blue;
+                padding: 30px;margin: 20px;
+                font-size: 20px;
+                height: 50vw;
+                }
+    </style>
+    <script src="./js/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            
+            // $(window)=>웹브라우저,창
+            // $(document,html) =>현재 웹 브라우저에 e롤을 의미
+            // $(this)=>현재 실행되는 함수 내에서 이벤트가 발생된 요소
+
+            $(window).resize(function(){
+                $('#width').text($('#wrapper').width())
+                $('#height').text($('#wrapper').height())
+                $('#innerWeight').text($('#wrapper').height())
+                $('#innerHeight').text($('#wrapper').height())
+                $('#outerWeight').text($('#wrapper').height())
+                $('#outerHeight').text($('#wrapper').height())
+                })
+            })
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+         <p><span>박스의 width = </span><span id="width">0</span></p>
+        <p><span>박스의 hight = </span><span id="height">0</span></p>
+        <p><span>박스의 innerwidth = </span><span id="innerWidth">0</span></p>
+        <p><span>박스의 innerHeight = </span><span id="innerHeight">0</span></p>
+        <p><span>박스의 overWidth =</span><span id="outerWidth">0</span></p>
+        <p><span>박스의 overWidth =</span><span id="outerWidth">0</span></p>
+        <p><span>박스의 overWidth =</span><span id="outerWidth">0</span></p>
+
+    </div>
+</body>
+</html>

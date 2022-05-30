@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크롤</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        body{width: 5000px;height: 5000px;}
+        #info{position: fixed;top: 0;left: 0;}
+        #wrapper{border: 5px solid blue;
+                width: 500px;height: 500px;
+                position: absolute;top: 100px;left: 100px;
+                }
+        #box{width: 100px;height: 100px;
+        background: red;color: white;
+    }
+    </style>
+    <script src="./js/jquery.js"></script>
+    <script src="./jquery-ui.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            $(window).scroll(function(){
+                
+                var sl = $(window).scrollLeft()
+                var st = $(window).scrollTop()
+
+                $('.scrollLeft').text(sl)
+                $('.scrollTop').text(st)
+            })
+            
+        })
+    </script>
+</head>
+<body>
+    <div id="info">
+    <span>scrollLeft</span><span class="scrollLeft">0</span><br>
+    <span>scrollTop</span><span class="scrollTop">0</span>
+</div>
+</body>
+</html>

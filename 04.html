@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일반적인 슬라이드</title>
+    <script src="../js/jquery.js"></script>
+    <style>
+        *{margin: 0;padding: 0;}
+        ul,li{list-style: none;}
+        a{text-decoration: none;}
+        img{border: 0;}
+
+        #slide{margin: 0 auto;margin-top: 1000px;
+            width: 600px; height: 350px;
+            border: 2px solid #000; 
+            position: relative;
+            overflow: hidden;}
+            .group{margin: 0 auto;width: 600px;padding: 10px;}
+            
+            .group a{background: white;
+            padding: 3px 6px;
+            border: 1px solid #ccc;
+            border-radius: 3px;}
+
+            .group a:hover{background-color: aqua;color: rgb(149, 34, 34);}
+        #viewer{height: 350px;position: relative;}
+        #viewer img{position: absolute;}
+        #viewer img.img1{top: 0;left: 0;}
+        #viewer img.img2{top: 0;left: 600px;}
+        #viewer img.img3{top: 0;left: 1200px;}
+        #viewer img.img4{top: 0;left: 1800px;}
+
+        #btns{
+            position:absolute;left: 10px;bottom: 10px;
+            z-index: 9999;}
+        #btns li{
+                float:left; margin-right: 10px;
+                width: 16px;height: 16px;   
+                background-color: rgb(122, 38, 38);
+                line-height: 16px;
+                text-align: center;
+                cursor: pointer;}
+        #btns li.on{
+           background-color: rgb(255, 255, 255);color: rgb(89, 80, 80); 
+        }
+                
+    </style>
+</head>
+<body>
+    <div id="slide">
+        <div id="viewer">
+            <img src="./images/slide1.jpg" alt=""class="img1">
+            <img src="./images/slide2.jpg" alt=""class="img2">
+            <img src="./images/slide3.jpg" alt=""class="img3">
+            <img src="./images/slide4.jpg" alt=""class="img4">
+
+        </div>
+        <div>
+            <ul id="btns">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+            </ul>
+        </div>
+    </div>
+    <div class="group">
+        <a href="#" class="l_btn">left</a>
+        <a href="#" class="r_btn">right</a>
+    <!-- <button>left</button> -->
+    <!-- <button>right</button> -->
+</div>
+    <script>
+$(document).ready(function(){
+    //초기값으로 첫번째 버튼에 스타일 적용
+
+    $('#btns li').eq(0).addClass('on')
+        var cnt = 0;
+
+
+        $('#btns li').click(function(){
+            $('#btns li').removeClass('on')
+            var i = $(this).index()
+            // console.log(i)
+            slideTarget(i)
+
+            //$(대상).css({속성:'속성값',속성:'속성값'})
+            //$(대상).addClass('선택자');미리 스타일 선언
+        })
+
+    $('.l_btn').click(function(e){
+        e.preventDefault();//a태그에 이벤트를 초기화!!
+        if(cnt < 3){
+        cnt = cnt + 1;
+        console.log(cnt)
+        slideTarget(cnt)
+        $('#btns li').removeClass('on')
+        }
+    })
+    $('.r_btn').click(function(e){
+        e.preventDefault();//a태그에 이벤트를 초기화!!
+        if(cnt > 0){
+        cnt = cnt - 1;
+        slideTarget(cnt);
+        $('#btns li').removeClass('on')
+        }
+    })
+        function slideTarget(n){
+            var pos = n* (-600) +'px';
+            $('#viewer').animate({left:pos},function(){
+                $('#btns li').eq(n).addClass('on');
+            })
+        }
+})    
+    </script>
+</body>
+</html>
